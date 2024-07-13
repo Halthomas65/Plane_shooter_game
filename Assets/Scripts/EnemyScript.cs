@@ -9,15 +9,22 @@ public class EnemyScript : MonoBehaviour
     public GameObject enemyBullet;
     public GameObject flash;
     public GameObject explosionPrefab;
+    public Healthbar healthbar;
+
     public float fireRate = 0.5f;
     public float flashTime = 0.05f;
     public float speed = 1f;
+    public float health = 10f;
+
+    float barSize = 1f;
+    float damage = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         flash.SetActive(false);
         StartCoroutine(EnemyShooting());
+        damage = barSize / health;  // Die in 10 hits (health = 10)
     }
 
     // Update is called once per frame
@@ -30,9 +37,26 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerBullet")
         {
-            Destroy(gameObject);
-            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(explosion, 0.5f);
+            DamageHealthbar();
+            Destroy(collision.gameObject);
+
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(explosion, 0.5f);
+            }
+
+        }
+    }
+
+    void DamageHealthbar()
+    {
+        if (health > 0)
+        {
+            health -= 1;
+            barSize -= damage;
+            healthbar.SetSize(barSize);
         }
     }
 

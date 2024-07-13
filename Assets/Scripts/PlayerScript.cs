@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public GameObject explosion;
+    public PlayerHealthbar playerHealthbar;
     public float speed = 10;
     public float padding = 0.8f;    // padding to keep the player within the screen
     float minX;
     float maxX;
     float minY;
     float maxY;
+
+    public float health = 20f;
+    float barFillAmount = 1f;
+    float damage = 0;
 
     void FindBoundaries()
     {
@@ -24,11 +30,12 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("minX: " + minX + " maxX: " + maxX + " minY: " + minY + " maxY: " + maxY);
     }
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
         FindBoundaries();
+        damage = barFillAmount / health; // Die in 20 hits (health = 20)
     }
 
     // Update is called once per frame
@@ -41,5 +48,32 @@ public class PlayerScript : MonoBehaviour
         float newYPos = Mathf.Clamp(transform.position.y + deltaY, minY, maxY);
 
         transform.position = new Vector3(newXPos, newYPos, 0);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyBullet")
+        {
+            DamagePlayerHealthbar();
+            Destroy(collision.gameObject);
+
+            if (health <= 0)
+            {
+                GameObject blast = Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                Destroy(blast, 2f);
+            }
+        }
+    }
+
+    void DamagePlayerHealthbar()
+    {
+        if (health > 0)
+        {
+            health -= 1;
+            barFillAmount -= damage;
+            // GetComponent<PlayerHealthbar>().SetAmount(barFillAmount);
+            playerHealthbar.SetAmount(barFillAmount);
+        }
     }
 }
