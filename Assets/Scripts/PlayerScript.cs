@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public GameObject explosion;
+    // public GameObject dmgEffect;
     public PlayerHealthbar playerHealthbar;
     public float speed = 10;
     public float padding = 0.8f;    // padding to keep the player within the screen
@@ -57,6 +58,13 @@ public class PlayerScript : MonoBehaviour
             DamagePlayerHealthbar();
             Destroy(collision.gameObject);
 
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            if (bullet != null && bullet.dmgEffect != null)
+            {
+                GameObject dmgVfx = Instantiate(bullet.dmgEffect, collision.transform.position, Quaternion.identity);
+                Destroy(dmgVfx, 0.05f);
+            }
+
             if (health <= 0)
             {
                 GameObject blast = Instantiate(explosion, transform.position, Quaternion.identity);
@@ -72,7 +80,6 @@ public class PlayerScript : MonoBehaviour
         {
             health -= 1;
             barFillAmount -= damage;
-            // GetComponent<PlayerHealthbar>().SetAmount(barFillAmount);
             playerHealthbar.SetAmount(barFillAmount);
         }
     }

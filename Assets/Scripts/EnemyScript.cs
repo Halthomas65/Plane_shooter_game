@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public Transform gunpoint1;
-    public Transform gunpoint2;
+    public Transform []gunpoint;
     public GameObject enemyBullet;
+    // public GameObject dmgEffect;
     public GameObject flash;
     public GameObject explosionPrefab;
     public Healthbar healthbar;
@@ -40,6 +40,13 @@ public class EnemyScript : MonoBehaviour
             DamageHealthbar();
             Destroy(collision.gameObject);
 
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            if (bullet != null && bullet.dmgEffect != null)
+            {
+                GameObject dmgVfx = Instantiate(bullet.dmgEffect, collision.transform.position, Quaternion.identity);
+                Destroy(dmgVfx, 0.05f);
+            }
+
             if (health <= 0)
             {
                 Destroy(gameObject);
@@ -62,8 +69,12 @@ public class EnemyScript : MonoBehaviour
 
     void enemyFire()
     {
-        Instantiate(enemyBullet, gunpoint1.position, Quaternion.identity);
-        Instantiate(enemyBullet, gunpoint2.position, Quaternion.identity);
+        for (int i = 0; i < gunpoint.Length; i++)
+        {
+            Instantiate(enemyBullet, gunpoint[i].position, Quaternion.identity);
+        }
+        // Instantiate(enemyBullet, gunpoint1.position, Quaternion.identity);
+        // Instantiate(enemyBullet, gunpoint2.position, Quaternion.identity);
     }
 
     IEnumerator EnemyShooting()
