@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-     public GameObject pauseMenu;
-     public GameObject pauseButton;
+    public GameObject pauseMenu;
+    public GameObject pauseButton;
     //  public GameObject resumeButton;
     public GameObject gameOverPanel;
+    public GameObject levelCompletePanel;
+    public GameObject endText;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
+        endText.SetActive(false);
+        levelCompletePanel.SetActive(false);
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
         gameOverPanel.SetActive(false);
@@ -20,7 +25,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void PauseGame()
@@ -42,6 +47,17 @@ public class GameController : MonoBehaviour
         gameOverPanel.SetActive(true);
         pauseButton.SetActive(false);
         // Time.timeScale = 0;
+    }
+
+    public IEnumerator LevelComplete()
+    {
+        yield return new WaitForSeconds(2);
+        endText.SetActive(true);
+        yield return new WaitForSeconds(3);
+
+        levelCompletePanel.SetActive(true);
+        pauseButton.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public void QuitGame()

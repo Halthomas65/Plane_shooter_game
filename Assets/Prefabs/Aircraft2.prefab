@@ -130,10 +130,10 @@ MonoBehaviour:
   flash: {fileID: 9012842105089691899}
   explosionPrefab: {fileID: 8920051909259726469, guid: b2b2933fa52b9ee4c80649ab0ce16bd2, type: 3}
   healthbar: {fileID: 5974472462380690089}
-  fireRate: 0.5
+  fireRate: 1
   flashTime: 0.05
   speed: 1
-  health: 10
+  health: 5
 --- !u!50 &8256673089343817984
 Rigidbody2D:
   serializedVersion: 4
