@@ -359,7 +359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &255501657
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1604,8 +1604,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy:
   - {fileID: 4190577835466095208, guid: c4727fd82e132d64080476244ef02611, type: 3}
+  - {fileID: 5570086211110211227, guid: 452a42659a94de6469423ff05c8a1548, type: 3}
+  - {fileID: 1451673333802482605, guid: d39e606d3e416804fa5e7ef67d0ce689, type: 3}
   respawnTime: 3
-  enemySpawnCount: 5
+  enemySpawnCount: 15
   gameController: {fileID: 1056350868}
 --- !u!4 &1046393006
 Transform:

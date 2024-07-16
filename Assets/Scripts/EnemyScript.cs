@@ -11,6 +11,8 @@ public class EnemyScript : MonoBehaviour
     public GameObject explosionPrefab;
     public Healthbar healthbar;
 
+    public int killScore = 1;
+
     public float fireRate = 0.5f;
     public float flashTime = 0.05f;
     public float speed = 1f;
@@ -50,6 +52,8 @@ public class EnemyScript : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(gameObject);
+                PlayerScript.playerScore += killScore;
+                Debug.Log("Score: " + PlayerScript.playerScore);
                 GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                 Destroy(explosion, 0.5f);
             }

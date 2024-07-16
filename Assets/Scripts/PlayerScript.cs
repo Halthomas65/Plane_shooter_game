@@ -19,6 +19,8 @@ public class PlayerScript : MonoBehaviour
     float barFillAmount = 1f;
     float damage = 0;
 
+    public static int playerScore = 0;
+
     void FindBoundaries()
     {
         Camera gameCam = Camera.main;
@@ -50,6 +52,12 @@ public class PlayerScript : MonoBehaviour
         float newYPos = Mathf.Clamp(transform.position.y + deltaY, minY, maxY);
 
         transform.position = new Vector3(newXPos, newYPos, 0);
+
+        if (Input.GetMouseButton(0))
+        {
+            Vector2 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = Vector2.Lerp(transform.position, newPos, speed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
