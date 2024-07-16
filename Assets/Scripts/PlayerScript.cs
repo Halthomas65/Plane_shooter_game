@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject explosion;
     // public GameObject dmgEffect;
     public PlayerHealthbar playerHealthbar;
+    public GameController gameController;
     public float speed = 10;
     public float padding = 0.8f;    // padding to keep the player within the screen
     float minX;
@@ -70,6 +71,7 @@ public class PlayerScript : MonoBehaviour
                 GameObject blast = Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 Destroy(blast, 2f);
+                gameController.GameOver();
             }
         }
     }
