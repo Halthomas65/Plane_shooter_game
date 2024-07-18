@@ -10,8 +10,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject flash;
     public GameObject explosionPrefab;
     public Healthbar healthbar;
-
-    public int killScore = 1;
+    public GameObject coinPrefab;
 
     public float fireRate = 0.5f;
     public float flashTime = 0.05f;
@@ -52,12 +51,24 @@ public class EnemyScript : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(gameObject);
-                PlayerScript.playerScore += killScore;
-                Debug.Log("Score: " + PlayerScript.playerScore);
+                GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
                 GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                 Destroy(explosion, 0.5f);
             }
 
+        }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            DamageHealthbar();
+            
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(explosion, 0.5f);
+            }
         }
     }
 
@@ -77,8 +88,6 @@ public class EnemyScript : MonoBehaviour
         {
             Instantiate(enemyBullet, gunpoint[i].position, Quaternion.identity);
         }
-        // Instantiate(enemyBullet, gunpoint1.position, Quaternion.identity);
-        // Instantiate(enemyBullet, gunpoint2.position, Quaternion.identity);
     }
 
     IEnumerator EnemyShooting()

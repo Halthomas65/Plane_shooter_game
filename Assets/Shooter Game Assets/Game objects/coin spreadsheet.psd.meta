@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 120
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: coin spreadsheet_0
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 134
+        width: 21
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 376230ff995cbbb40b60e769ace2603c
+      internalID: -1785212988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin spreadsheet_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 133
+        width: 50
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3d9430d7f8af9040af8d9338f7f35bc
+      internalID: 1298123334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin spreadsheet_3
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 134
+        width: 82
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed262681f5e6533469164de1de6575ea
+      internalID: 1891852634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin spreadsheet_5
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 136
+        width: 86
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61b9bf687b4b5d24b890063e38bba771
+      internalID: 2105057413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin spreadsheet_7
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 11
+        width: 52
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb5d03158aa31ba4db629575b4fa784f
+      internalID: 1770632241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin spreadsheet_9
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 13
+        width: 84
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3534ed1f030a7d54fb40cec4ec827edc
+      internalID: 428310874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +245,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      coin spreadsheet_0: -1785212988
+      coin spreadsheet_1: 1298123334
+      coin spreadsheet_10: -643307476
+      coin spreadsheet_11: -1498490617
+      coin spreadsheet_12: -662984354
+      coin spreadsheet_13: 1838177647
+      coin spreadsheet_2: -1057894235
+      coin spreadsheet_3: 1891852634
+      coin spreadsheet_4: -1670412360
+      coin spreadsheet_5: 2105057413
+      coin spreadsheet_6: -1517567212
+      coin spreadsheet_7: 1770632241
+      coin spreadsheet_8: 320154668
+      coin spreadsheet_9: 428310874
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1654289543, guid: d132305bd95c4dc448b441d4e611782c, type: 3}
+  m_Sprite: {fileID: 580967543, guid: d132305bd95c4dc448b441d4e611782c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.36}
+  m_Size: {x: 0.72, y: 0.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -245,6 +245,8 @@ MonoBehaviour:
   flash: {fileID: 759527104502116055}
   explosionPrefab: {fileID: 8920051909259726469, guid: b2b2933fa52b9ee4c80649ab0ce16bd2, type: 3}
   healthbar: {fileID: 6943245320256762544}
+  coinPrefab: {fileID: 3366632271492891895, guid: b6d5bc64d305c1445afd1a43c9b2bb53, type: 3}
+  killScore: 1
   fireRate: 0.5
   flashTime: 0.05
   speed: 1

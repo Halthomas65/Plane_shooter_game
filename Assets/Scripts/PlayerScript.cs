@@ -8,6 +8,8 @@ public class PlayerScript : MonoBehaviour
     // public GameObject dmgEffect;
     public PlayerHealthbar playerHealthbar;
     public GameController gameController;
+    public ScoreCount scoreCountScript;
+
     public float speed = 10;
     public float padding = 0.8f;    // padding to keep the player within the screen
     float minX;
@@ -18,8 +20,6 @@ public class PlayerScript : MonoBehaviour
     public float health = 20f;
     float barFillAmount = 1f;
     float damage = 0;
-
-    public static int playerScore = 0;
 
     void FindBoundaries()
     {
@@ -81,6 +81,32 @@ public class PlayerScript : MonoBehaviour
                 Destroy(blast, 2f);
                 gameController.GameOver();
             }
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            DamagePlayerHealthbar();
+            
+            if (health <= 0)
+            {
+                GameObject blast = Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                Destroy(blast, 2f);
+                gameController.GameOver();
+            }
+        }
+
+        if (collision.gameObject.tag == "Coin")
+        {
+            Destroy(collision.gameObject);
+            scoreCountScript.AddScore();
+        }
+
+        if (collision.gameObject.tag == "PowerUp")
+        {
+            Destroy(collision.gameObject);
+
+            // Change player prefab
         }
     }
 
