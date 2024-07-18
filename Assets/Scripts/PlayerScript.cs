@@ -21,6 +21,11 @@ public class PlayerScript : MonoBehaviour
     float barFillAmount = 1f;
     float damage = 0;
 
+    public AudioSource audioSource;
+    public AudioClip dmgSound;
+    public AudioClip explosionSound;
+    public AudioClip coinSound;
+
     void FindBoundaries()
     {
         Camera gameCam = Camera.main;
@@ -64,6 +69,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyBullet")
         {
+            audioSource.PlayOneShot(dmgSound, 0.5f);
             DamagePlayerHealthbar();
             Destroy(collision.gameObject);
 
@@ -76,28 +82,23 @@ public class PlayerScript : MonoBehaviour
 
             if (health <= 0)
             {
-                GameObject blast = Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                Destroy(blast, 2f);
-                gameController.GameOver();
+                Die();
             }
         }
 
         if (collision.gameObject.tag == "Enemy")
         {
             DamagePlayerHealthbar();
-            
+
             if (health <= 0)
             {
-                GameObject blast = Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                Destroy(blast, 2f);
-                gameController.GameOver();
+                Die();
             }
         }
 
         if (collision.gameObject.tag == "Coin")
         {
+            audioSource.PlayOneShot(coinSound, 0.5f);
             Destroy(collision.gameObject);
             scoreCountScript.AddScore();
         }
@@ -118,5 +119,14 @@ public class PlayerScript : MonoBehaviour
             barFillAmount -= damage;
             playerHealthbar.SetAmount(barFillAmount);
         }
+    }
+
+    void Die()
+    {
+        AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position, 0.5f);
+        GameObject blast = Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        Destroy(blast, 2f);
+        gameController.GameOver();
     }
 }

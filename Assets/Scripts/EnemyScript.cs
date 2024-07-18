@@ -20,6 +20,11 @@ public class EnemyScript : MonoBehaviour
     float barSize = 1f;
     float damage = 0;
 
+    public AudioClip explosionSound;
+    public AudioClip bulletSound;
+    public AudioClip dmgSound;
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +43,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerBullet")
         {
+            audioSource.PlayOneShot(dmgSound, 0.5f);
             DamageHealthbar();
             Destroy(collision.gameObject);
 
@@ -50,10 +56,7 @@ public class EnemyScript : MonoBehaviour
 
             if (health <= 0)
             {
-                Destroy(gameObject);
-                GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
-                GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                Destroy(explosion, 0.5f);
+                Die();
             }
 
         }
@@ -64,10 +67,7 @@ public class EnemyScript : MonoBehaviour
             
             if (health <= 0)
             {
-                Destroy(gameObject);
-                GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
-                GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                Destroy(explosion, 0.5f);
+                Die();
             }
         }
     }
@@ -80,6 +80,15 @@ public class EnemyScript : MonoBehaviour
             barSize -= damage;
             healthbar.SetSize(barSize);
         }
+    }
+
+    void Die()
+    {
+        AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position, 0.5f);
+        Destroy(gameObject);
+        GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(explosion, 0.5f);
     }
 
     void enemyFire()
@@ -96,6 +105,8 @@ public class EnemyScript : MonoBehaviour
         {
             yield return new WaitForSeconds(fireRate);
             enemyFire();
+
+            audioSource.PlayOneShot(bulletSound, 0.5f);
 
             flash.SetActive(true);
             yield return new WaitForSeconds(flashTime);

@@ -11,6 +11,8 @@ public class Shooting : MonoBehaviour
     public float fireRate = 1f;
     public float flashTime = 0.05f;
 
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,8 @@ public class Shooting : MonoBehaviour
         {
             yield return new WaitForSeconds(fireRate);
             Fire();
+
+            audioSource.Play();
 
             flash.SetActive(true);
             yield return new WaitForSeconds(flashTime);

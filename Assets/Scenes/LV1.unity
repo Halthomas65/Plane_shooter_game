@@ -2455,6 +2455,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1580373520 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6120358161092177157, guid: 7448dbf245a917741b3240d8d9c92505, type: 3}
+  m_PrefabInstance: {fileID: 3395715478294571653}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1582871711
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,14 +3427,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8476823041402469892, guid: 7448dbf245a917741b3240d8d9c92505, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 8965028542551057648, guid: 7448dbf245a917741b3240d8d9c92505, type: 3}
+      propertyPath: health
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8965028542551057648, guid: 7448dbf245a917741b3240d8d9c92505, type: 3}
-      propertyPath: scoreCount
+      propertyPath: dmgSound
       value: 
-      objectReference: {fileID: 423816175}
+      objectReference: {fileID: 8300000, guid: 65af88e0f749d7c44aeba23fc9dbf77b, type: 3}
+    - target: {fileID: 8965028542551057648, guid: 7448dbf245a917741b3240d8d9c92505, type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a7f34bd320a5e1e49836a9d4403fcfee, type: 3}
+    - target: {fileID: 8965028542551057648, guid: 7448dbf245a917741b3240d8d9c92505, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1580373520}
+    - target: {fileID: 8965028542551057648, guid: 7448dbf245a917741b3240d8d9c92505, type: 3}
+      propertyPath: explosionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b6faf9d20b55c847bb3c0e74d3c1795, type: 3}
     - target: {fileID: 8965028542551057648, guid: 7448dbf245a917741b3240d8d9c92505, type: 3}
       propertyPath: gameController
       value: 
