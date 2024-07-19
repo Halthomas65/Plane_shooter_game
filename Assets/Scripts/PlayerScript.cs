@@ -97,18 +97,7 @@ public class PlayerScript : MonoBehaviour
 
             if (health <= 0)
             {
-                if (life > 0)
-                {
-                    life--;
-                    lifeIcon.transform.GetChild(life).gameObject.SetActive(false);
-                    health = fullHealth;
-                    barFillAmount = 1;
-                    playerHealthbar.SetAmount(barFillAmount);
-                }
-                else
-                {
-                    Die();
-                }
+                Die();
             }
         }
 
@@ -118,17 +107,7 @@ public class PlayerScript : MonoBehaviour
 
             if (health <= 0)
             {
-                if (life > 0)
-                {
-                    life--;
-                    health = fullHealth;
-                    barFillAmount = 1;
-                    playerHealthbar.SetAmount(barFillAmount);
-                }
-                else
-                {
-                    Die();
-                }
+                Die();
             }
         }
 
@@ -167,12 +146,28 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void Die()
+    void Explode()
     {
         AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position, 0.5f);
         GameObject blast = Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
         Destroy(blast, 2f);
-        gameController.GameOver();
+    }
+
+    void Die()
+    {
+        Explode();
+        if (life > 0)
+        {
+            life--;
+            lifeIcon.transform.GetChild(life).gameObject.SetActive(false);
+            health = fullHealth;
+            barFillAmount = 1;
+            playerHealthbar.SetAmount(barFillAmount);
+        }
+        else
+        {
+            Destroy(gameObject);
+            gameController.GameOver();
+        }
     }
 }

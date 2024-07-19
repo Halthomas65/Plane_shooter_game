@@ -132,7 +132,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 8920051909259726469, guid: b2b2933fa52b9ee4c80649ab0ce16bd2, type: 3}
   healthbar: {fileID: 5974472462380690089}
   coinPrefab: {fileID: 3366632271492891895, guid: b6d5bc64d305c1445afd1a43c9b2bb53, type: 3}
-  fireRate: 1
+  fireRate: 0.75
   flashTime: 0.05
   speed: 1
   health: 5
@@ -334,7 +334,7 @@ Transform:
   m_GameObject: {fileID: 8036400350815196915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.137, y: -1.093, z: 0}
+  m_LocalPosition: {x: -0.01, y: -0.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

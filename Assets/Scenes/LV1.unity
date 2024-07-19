@@ -595,7 +595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &305325763
 Transform:
   m_ObjectHideFlags: 0
@@ -1735,7 +1735,6 @@ MonoBehaviour:
   gameOverPanel: {fileID: 383475197}
   levelCompletePanel: {fileID: 720780566}
   endText: {fileID: 1381846230}
-  level: 1
 --- !u!4 &1056350869
 Transform:
   m_ObjectHideFlags: 0

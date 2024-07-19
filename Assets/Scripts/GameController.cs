@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject levelCompletePanel;
     public GameObject endText;
-    public int level = 1;
+    // public int level = 1;
 
     // Start is called before the first frame update
     void Start()

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4242254339811121497}
   - component: {fileID: 2546959830647420979}
   - component: {fileID: 8965028542551057648}
-  - component: {fileID: 590688610467549500}
   - component: {fileID: 8280910066752199876}
   - component: {fileID: 8280598104303361553}
   - component: {fileID: 6120358161092177157}
@@ -136,26 +135,8 @@ MonoBehaviour:
   explosionSound: {fileID: 0}
   coinSound: {fileID: 0}
   currentGrade: 1
---- !u!114 &590688610467549500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8476823041402469892}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a1e523999ddfb741a94c21b8414024d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerBullet: {fileID: 3580538134884494653, guid: ab7176176e7fc2e4d9449880c1b4bec3, type: 3}
-  shootPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  flash: {fileID: 0}
-  fireRate: 0.5
-  flashTime: 0.05
-  audioSource: {fileID: 6120358161092177157}
+  life: 1
+  lifeIcon: {fileID: 0}
 --- !u!50 &8280910066752199876
 Rigidbody2D:
   serializedVersion: 4

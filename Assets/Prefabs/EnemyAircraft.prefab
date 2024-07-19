@@ -249,7 +249,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 8920051909259726469, guid: b2b2933fa52b9ee4c80649ab0ce16bd2, type: 3}
   healthbar: {fileID: 6641959266926083783}
   coinPrefab: {fileID: 3366632271492891895, guid: b6d5bc64d305c1445afd1a43c9b2bb53, type: 3}
-  fireRate: 1
+  fireRate: 0.75
   flashTime: 0.05
   speed: 1
   health: 5

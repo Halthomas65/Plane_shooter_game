@@ -8,7 +8,7 @@ public class Shooting : MonoBehaviour
     public Transform[] shootPoints;
     public GameObject flash;
 
-    public float fireRate = 1f;
+    public float fireRate = 0.5f;
     public float flashTime = 0.05f;
 
     public AudioSource audioSource;
