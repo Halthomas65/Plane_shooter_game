@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviour
     float maxY;
 
     public float health = 20f;
+    private float fullHealth = 20f;
     float barFillAmount = 1f;
     float damage = 0;
 
@@ -27,6 +28,8 @@ public class PlayerScript : MonoBehaviour
     public AudioClip coinSound;
 
     public int currentGrade = 1;    // current upgrade level
+    public int life = 1;   // number of lives
+    public GameObject lifeIcon;
 
     void FindBoundaries()
     {
@@ -46,6 +49,16 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         FindBoundaries();
+
+        Debug.Log("Life: " + life);
+
+        for (int i = 0; i < life; i++)
+        {
+            lifeIcon.transform.GetChild(i).gameObject.SetActive(true);
+        }
+
+        fullHealth = health;
+
         damage = barFillAmount / health; // Die in 20 hits (health = 20)
     }
 
@@ -84,7 +97,18 @@ public class PlayerScript : MonoBehaviour
 
             if (health <= 0)
             {
-                Die();
+                if (life > 0)
+                {
+                    life--;
+                    lifeIcon.transform.GetChild(life).gameObject.SetActive(false);
+                    health = fullHealth;
+                    barFillAmount = 1;
+                    playerHealthbar.SetAmount(barFillAmount);
+                }
+                else
+                {
+                    Die();
+                }
             }
         }
 
@@ -94,7 +118,17 @@ public class PlayerScript : MonoBehaviour
 
             if (health <= 0)
             {
-                Die();
+                if (life > 0)
+                {
+                    life--;
+                    health = fullHealth;
+                    barFillAmount = 1;
+                    playerHealthbar.SetAmount(barFillAmount);
+                }
+                else
+                {
+                    Die();
+                }
             }
         }
 
@@ -109,14 +143,11 @@ public class PlayerScript : MonoBehaviour
         {
             Destroy(collision.gameObject);
 
-            // Change player prefab
-            // Instantiate(collision.gameObject.GetComponent<PowerUpScript>().playerPrefabs[currentGrade + 1], transform.position, Quaternion.identity);
-            // Destroy(gameObject);
             if (currentGrade < collision.gameObject.GetComponent<PowerUpScript>().shooterPrefabs.Length - 1)
             {
                 currentGrade++;
                 GameObject newShooter = collision.gameObject.GetComponent<PowerUpScript>().shooterPrefabs[currentGrade];
-                
+
                 Destroy(gameObject.transform.GetChild(0).gameObject);   // Destroy the current shooter
 
                 Instantiate(newShooter, transform.position, Quaternion.identity, transform);  // Instantiate the new shooter

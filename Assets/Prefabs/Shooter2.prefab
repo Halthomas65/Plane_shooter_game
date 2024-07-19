@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1e523999ddfb741a94c21b8414024d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBullet: {fileID: 0}
+  playerBullet: {fileID: 3580538134884494653, guid: ab7176176e7fc2e4d9449880c1b4bec3, type: 3}
   shootPoints:
   - {fileID: 2691453973760166932}
   - {fileID: 5983263277401254667}

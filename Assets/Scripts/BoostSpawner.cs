@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class BoostSpawner : MonoBehaviour
 {
     public GameObject[] clone;
-    public float respawnTime = 3f;
-    public int TotalSpawnCount = 10;
+    public float respawnTime = 10f;
+    public int TotalSpawnCount = 5;
 
     public GameController gameController;
-    private bool lastCloneSpawned = false;
+    // private bool lastCloneSpawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,23 +20,17 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lastCloneSpawned && FindObjectOfType<EnemyScript>() == null)
-        {
-            StartCoroutine(gameController.LevelComplete());
-        }
+
     }
 
     IEnumerator SpawnRoutine()
     {
-        for (int i = 0; i < TotalSpawnCount; i++)
+        // for (int i = 0; i < TotalSpawnCount; i++)
+        while (true)
         {
-            SpawnClone();
             yield return new WaitForSeconds(respawnTime);
+            SpawnClone();
         }
-
-        lastCloneSpawned = true;
-
-        // gameController.LevelComplete();
     }
 
     void SpawnClone()
