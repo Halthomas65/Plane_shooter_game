@@ -26,6 +26,8 @@ public class PlayerScript : MonoBehaviour
     public AudioClip explosionSound;
     public AudioClip coinSound;
 
+    public int currentGrade = 1;    // current upgrade level
+
     void FindBoundaries()
     {
         Camera gameCam = Camera.main;
@@ -108,6 +110,19 @@ public class PlayerScript : MonoBehaviour
             Destroy(collision.gameObject);
 
             // Change player prefab
+            // Instantiate(collision.gameObject.GetComponent<PowerUpScript>().playerPrefabs[currentGrade + 1], transform.position, Quaternion.identity);
+            // Destroy(gameObject);
+            if (currentGrade < collision.gameObject.GetComponent<PowerUpScript>().shooterPrefabs.Length - 1)
+            {
+                currentGrade++;
+                GameObject newShooter = collision.gameObject.GetComponent<PowerUpScript>().shooterPrefabs[currentGrade];
+                
+                Destroy(gameObject.transform.GetChild(0).gameObject);   // Destroy the current shooter
+
+                Instantiate(newShooter, transform.position, Quaternion.identity, transform);  // Instantiate the new shooter
+
+                Destroy(collision.gameObject);
+            }
         }
     }
 

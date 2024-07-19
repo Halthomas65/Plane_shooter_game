@@ -7,8 +7,8 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - Enemy
-  - Powerup
   - Coin
+  - PowerUp
   layers:
   - Default
   - TransparentFX
