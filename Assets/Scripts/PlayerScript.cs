@@ -28,8 +28,6 @@ public class PlayerScript : MonoBehaviour
     public AudioClip coinSound;
 
     public int currentGrade = 1;    // current upgrade level
-    public int life = 1;   // number of lives
-    public GameObject lifeIcon;
 
     void FindBoundaries()
     {
@@ -49,13 +47,6 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         FindBoundaries();
-
-        Debug.Log("Life: " + life);
-
-        for (int i = 0; i < life; i++)
-        {
-            lifeIcon.transform.GetChild(i).gameObject.SetActive(true);
-        }
 
         fullHealth = health;
 
@@ -156,18 +147,8 @@ public class PlayerScript : MonoBehaviour
     void Die()
     {
         Explode();
-        if (life > 0)
-        {
-            life--;
-            lifeIcon.transform.GetChild(life).gameObject.SetActive(false);
-            health = fullHealth;
-            barFillAmount = 1;
-            playerHealthbar.SetAmount(barFillAmount);
-        }
-        else
-        {
-            Destroy(gameObject);
-            gameController.GameOver();
-        }
+
+        Destroy(gameObject);
+        gameController.GameOver();
     }
 }

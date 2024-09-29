@@ -26,7 +26,17 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Pause the game after pressing Escape
+        bool pause = Input.GetKeyDown(KeyCode.Escape);
+        if (pause)
+        {
+            if (Time.timeScale != 0)    // pause
+                PauseGame();
+            else    // resume
+            {
+                ResumeGame();
+            }
+        }
     }
 
     public void PauseGame()
