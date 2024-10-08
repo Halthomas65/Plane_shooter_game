@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 
-public class PlayerHealthbar : MonoBehaviour
+public class BulletsPool : MonoBehaviour
 {
-    public Image bar;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +14,5 @@ public class PlayerHealthbar : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void SetAmount(float amount)
-    {
-        bar.fillAmount = amount;
     }
 }

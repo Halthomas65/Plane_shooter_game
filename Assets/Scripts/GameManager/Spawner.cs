@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] clone;
+    public EnemyPool enemyPool;
+    public GameObject[] clone;  // TODO: remove
     public float respawnTime = 3f;
-    public int TotalSpawnCount = 10;
+    public int TotalSpawnCount = 10;    // TODO: remove
 
     public GameController gameController;
     private bool lastCloneSpawned = false;
@@ -15,6 +16,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnRoutine());
+        // enemyPool[0].Setactive(true);
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < TotalSpawnCount; i++)
         {
+            // GameObject clone = enemyPool.GetEnemy();  // TODO: replace with enemyPool.GetEnemy() when implemented
             SpawnClone();
             yield return new WaitForSeconds(respawnTime);
         }
