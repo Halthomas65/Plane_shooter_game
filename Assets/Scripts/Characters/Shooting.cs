@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public GameObject playerBullet;
+    public ObjectPooler bulletPool;
+    // public GameObject playerBullet;
     public Transform[] shootPoints;
     public GameObject flash;
 
@@ -20,17 +21,15 @@ public class Shooting : MonoBehaviour
         StartCoroutine(Shoot());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Fire();
-    }
-
     void Fire()
     {
         for (int i = 0; i < shootPoints.Length; i++)
         {
-            Instantiate(playerBullet, shootPoints[i].position, Quaternion.identity);
+            // Instantiate(playerBullet, shootPoints[i].position, Quaternion.identity);
+            GameObject bullet = bulletPool.GetPooledObject();
+            bullet.transform.position = shootPoints[i].position;
+            bullet.transform.rotation = shootPoints[i].rotation;
+            bullet.SetActive(true);
         }
     }
 

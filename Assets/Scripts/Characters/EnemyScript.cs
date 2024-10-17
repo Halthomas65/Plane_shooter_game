@@ -45,7 +45,8 @@ public class EnemyScript : MonoBehaviour
         {
             audioSource.PlayOneShot(dmgSound, 0.5f);
             DamageHealthbar();
-            Destroy(collision.gameObject);
+            // Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
 
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             if (bullet != null && bullet.dmgEffect != null)
@@ -85,7 +86,9 @@ public class EnemyScript : MonoBehaviour
     void Die()
     {
         AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position, 0.5f);
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        gameObject.SetActive(false); // Put back into the object pool
+        
         GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
         GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(explosion, 0.5f);

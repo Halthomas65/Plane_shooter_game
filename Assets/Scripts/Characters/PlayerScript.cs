@@ -18,7 +18,6 @@ public class PlayerScript : MonoBehaviour
     float maxY;
 
     public float health = 20f;
-    private float fullHealth = 20f;
     float barFillAmount = 1f;
     float damage = 0;
 
@@ -47,8 +46,6 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         FindBoundaries();
-
-        fullHealth = health;
 
         damage = barFillAmount / health; // Die in 20 hits (health = 20)
     }
