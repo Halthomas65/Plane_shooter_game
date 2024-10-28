@@ -2,82 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//  Spawn and manage objects in the scene
 public class ObjectPooler : MonoBehaviour
 {
-    public GameObject prefab; // prefab to pool
-    public int poolSize = 10;
-
-    [SerializeField] private List<GameObject> pool;
+    public ObjectPool pool;
+    public float spawnInterval = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
-        InitializePool();
+        StartCoroutine(SpawnCoroutine());
     }
-    void FixedUpdate()
+
+    IEnumerator SpawnCoroutine()
     {
-        // // If more than 1.5 times the pool size is active, clear the pool to save memory
-        // if (pool.Count > 1.5 * poolSize)
-        // {
-        //     CleanPool();
-        // }
+        SpawnObject();
+        yield return new WaitForSeconds(spawnInterval);
     }
 
-    void InitializePool()
+    void SpawnObject()
     {
-        pool = new List<GameObject>();
+        GameObject newObject = pool.GetPooledObject();
 
-        for (int i = 0; i < poolSize; i++)
-        {
-            CreateNewObj();
-        }
+        newObject.transform.position = new Vector2(transform.position.x, transform.position.y);
+        newObject.transform.rotation = Quaternion.identity;
+        newObject.SetActive(true);
     }
 
-    GameObject CreateNewObj()
+    void DeactivateObject()
     {
-        GameObject obj = Instantiate(prefab, transform);
-        obj.SetActive(false);
-        pool.Add(obj);
-
-        return obj;
+        this.gameObject.SetActive(false);
     }
-
-    public GameObject GetPooledObject()
-    {
-        Debug.Log("GetPooledObject");
-
-        foreach (GameObject obj in pool)
-        {
-            Debug.Log("Iterating through objects");
-
-            // Check for inactive object
-            if (!obj.activeInHierarchy)
-            {
-                Debug.Log("Object inactive");
-                return obj;
-            }
-        }
-
-        // If no inactive object found, create a new one
-        return CreateNewObj();
-    }
-
-    // Clean the pool if there's too many inactive objects
-    public void CleanPool()
-    {
-        for (int i = pool.Count - 1; i >= poolSize; i--)
-        {
-            // Check for inactive object
-            if (!pool[i].activeInHierarchy)
-            {
-                Destroy(pool[i]);
-                pool.RemoveAt(i);
-            }
-        }
-    }
-
-    void ReturnToPool(GameObject obj)
-    {
-    }
-
 }

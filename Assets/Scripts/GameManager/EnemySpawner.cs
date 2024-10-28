@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     // multiple enemy types, each type is stored in  a separate pool
-    public ObjectPooler[] enemyPools;
+    public ObjectPool[] enemyPools;
     public float spawnInterval = 3f;
 
     public int TotalSpawnCount = 10;

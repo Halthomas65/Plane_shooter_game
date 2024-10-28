@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public ObjectPooler bulletPool;
+    public ObjectPool bulletPool;
     // public GameObject playerBullet;
     public Transform[] shootPoints;
     public GameObject flash;
